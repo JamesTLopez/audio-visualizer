@@ -41,6 +41,10 @@ html main .controller, body main .controller, #root main .controller, .App main 
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -48,11 +52,15 @@ html main .controller, body main .controller, #root main .controller, .App main 
       -ms-flex-align: center;
           align-items: center;
   width: 50%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
-html main .controller button, body main .controller button, #root main .controller button, .App main .controller button {
+html main .controller .button-controller button, body main .controller .button-controller button, #root main .controller .button-controller button, .App main .controller .button-controller button {
   height: 25px;
+}
+
+html main .controller .volume-controller, body main .controller .volume-controller, #root main .controller .volume-controller, .App main .controller .volume-controller {
+  padding: 10px;
 }
 
 html main .visual-area, body main .visual-area, #root main .visual-area, .App main .visual-area {

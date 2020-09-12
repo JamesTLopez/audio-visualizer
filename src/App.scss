@@ -23,13 +23,21 @@ html,body,#root,.App{
 
         .controller{
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             width: 50%;
-            margin-bottom: 30px;
-            button{
-                height: 25px;
+            margin-bottom: 20px;
+            .button-controller{
+                button{
+                    height: 25px;
+                }
+
             }
+            .volume-controller{
+                padding: 10px;
+            }
+           
         }
         .visual-area{
             display: flex;
