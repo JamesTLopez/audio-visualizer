@@ -74,7 +74,6 @@ html main .visual-area, body main .visual-area, #root main .visual-area, .App ma
       -ms-flex-align: center;
           align-items: center;
   width: 80%;
-  background-color: rgba(98, 0, 255, 0.068);
   height: 600px;
 }
 

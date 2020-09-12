@@ -11,10 +11,10 @@ const rain = require('./audio/Mems2.wav');
 function App() {
   const [soundFile,setSong] = useState<any>();
   const [Amp,setAmp] = useState<any>(new p5.Amplitude());
+  const [FFT,setFFT] = useState<any>(new p5.FFT());
   const [isSongLoaded,setLoaded] = useState<boolean>(true);
+  const [volHistory] = useState<any>([]);
 
-
-  let x = 50;
 
   const preload = () =>{
     setSong(new p5.SoundFile(rain,loaded))
@@ -26,29 +26,61 @@ function App() {
   }
 
   const setup = (P5: p5Types,canvasParentRef: Element) => {
-      P5.createCanvas(500, 500).parent(canvasParentRef);
-      setAmp(new p5.Amplitude())
-      Amp.getLevel();
-      P5.text('tap here to play', 10, 20);
- 
+      P5.createCanvas(700, 500).parent(canvasParentRef);
+      P5.angleMode(P5.DEGREES);
+      setAmp(new p5.Amplitude());
+      setFFT(new p5.FFT(0,512));
   }; 
 
   const draw = (p5: p5Types) => {
     p5.background(50);
 
+    //CENTER CIRCLE
     let vol = Amp.getLevel();
-    let diam = p5.map(vol,0,0.3,10 ,200);
-    
+    let diam = p5.map(vol,0,0.5,10 ,200);
     p5.fill(255,0,255);
-    p5.ellipse(p5.width/2,p5.height/2,diam*5,diam*5); 
+    p5.ellipse(p5.width/2,p5.height/2,diam*3,diam*3); 
 
-  
+    //AMP LINE
+    volHistory.push(vol);   
+    p5.stroke(255);
+    p5.noFill();
+    p5.translate(p5.width/2,p5.height/2);
+    p5.beginShape();
+    for(let i:number = 0; i < 360; i++){
+      let r = p5.map(volHistory[i],0,0.2,100,200);
+      let x = r * p5.cos(i);
+      let y = r * p5.sin(i);
+      // let y = p5.map(volHistory[i],0,0.2,p5.height/2,1);
+      p5.vertex(x,y);
+      
+    }
+    p5.endShape();
+    
+    if(volHistory.length > 360){
+      volHistory.splice(0,1);
+    }
+
+
+        // let spectrum = FFT.analyze();
+    // let w = (p5.width / 60)-4;
+    // p5.stroke(255);
+    // for(let i:number = 0; i < spectrum.length; i++){
+    //   let amp = spectrum[i];
+    //   let y = p5.map(amp,0,256,p5.height,0);
+    //   p5.line(i*w,p5.height,i*w,y);
+
+    // }
+
+    
 };
+
+
 
 
   function play() {
     soundFile.play(); 
-    soundFile.setVolume(0.1);
+    soundFile.setVolume(0.2);
   }
 
   let stop = () =>{
@@ -56,7 +88,9 @@ function App() {
   }
 
   let test = () =>{
-    console.log(Amp.getLevel());
+    console.log(volHistory);
+    volHistory.push(2);
+    console.log(volHistory);
 
   }
 
