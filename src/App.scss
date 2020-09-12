@@ -1,0 +1,53 @@
+html,body,#root,.App{
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y:hidden;
+
+    header{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color:#1b1f20;
+        color:white;
+     
+    }
+
+    main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color:#25292b;
+        height:80%;
+
+        .controller{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            margin-bottom: 30px;
+            button{
+                height: 25px;
+            }
+        }
+        .visual-area{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+            background-color:rgba(98, 0, 255, 0.068);
+            height: 600px;
+
+        }
+    }
+    footer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 120px;
+        color:white;
+        background-color:#1b1f20;
+    }
+
+}
