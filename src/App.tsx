@@ -3,7 +3,6 @@ import p5 from "p5";
 import p5Types from "p5";
 import Sketch from "react-p5";
 import "./App.css";
-// import P5Wrapper from 'react-p5-wrapper';
 import "p5/lib/addons/p5.sound";
 
 const rain = require("./audio/Mems2.wav");
@@ -14,7 +13,8 @@ function App() {
   const [isSongLoaded, setLoaded] = useState<boolean>(true);
   const [volumeTemp, setVolumeTemp] = useState<number>(20);
   const [isPlaying, setPlaying] = useState<boolean>(false);
-
+  
+  
   let preload = () => {
     setSong(new p5.SoundFile(rain, loaded));
   };
@@ -25,7 +25,7 @@ function App() {
   };
 
   const setup = (P5: p5Types, canvasParentRef: Element) => {
-    P5.createCanvas(850, 500).parent(canvasParentRef);
+    P5.createCanvas(700, 500).parent(canvasParentRef);
     P5.angleMode(P5.DEGREES);
 
     P5.colorMode(P5.HSB);
@@ -37,7 +37,7 @@ function App() {
     //SPECTRUM
     let spectrum = FFT.analyze();
     p5.translate(p5.width / 2, p5.height / 2);
-    p5.background(0);
+    p5.background(10);
 
     p5.beginShape();
     for (let i: number = 0; i < spectrum.length; i++) {
@@ -65,9 +65,8 @@ function App() {
   };
 
   let onChangeSlider = (e: any) => {
-    console.log(e.target.value / 100);
+    
     setVolumeTemp(e.target.value);
-
     soundFile.setVolume(e.target.value / 100);
   };
 
@@ -79,6 +78,9 @@ function App() {
       </header>
       <main>
         <div className="controller">
+          <div className="song">
+            <label>{rain}</label>
+          </div>
           <div className="button-controller">
             <button disabled={isSongLoaded} onClick={play}>
               Play audio
@@ -86,6 +88,7 @@ function App() {
             <button disabled={isSongLoaded} onClick={stop}>
               Stop audio
             </button>
+          
           </div>
           <div className="volume-controller">
             <input
@@ -99,6 +102,10 @@ function App() {
               className="slider"
               id="myRange"
             />
+            <label>Volume:  {volumeTemp}</label>
+          </div>
+          <div className="upload-controller">
+
           </div>
         </div>
 
@@ -107,7 +114,10 @@ function App() {
         </div>
       </main>
       <footer>
-        <h3>Copyright</h3>
+        <h3>Create by James Lopez </h3>
+        <a href="https://github.com/JamesTLopez/">
+              GitHub
+        </a>
       </footer>
     </div>
   );

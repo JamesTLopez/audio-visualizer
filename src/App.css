@@ -1,11 +1,19 @@
-html, body, #root, .App {
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+html,
+body,
+#root,
+.App {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
   overflow-y: hidden;
+  font-family: "Oswald", sans-serif;
 }
 
-html header, body header, #root header, .App header {
+html header,
+body header,
+#root header,
+.App header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19,10 +27,14 @@ html header, body header, #root header, .App header {
   color: white;
 }
 
-html main, body main, #root main, .App main {
+html main,
+body main,
+#root main,
+.App main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -37,7 +49,10 @@ html main, body main, #root main, .App main {
   height: 80%;
 }
 
-html main .controller, body main .controller, #root main .controller, .App main .controller {
+html main .controller,
+body main .controller,
+#root main .controller,
+.App main .controller {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -51,19 +66,95 @@ html main .controller, body main .controller, #root main .controller, .App main 
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 50%;
-  margin-bottom: 20px;
+  width: 20%;
+  padding: 10px;
+  background-color: #171a1b;
+  -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.26);
+          box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.26);
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-bottom: 5px;
 }
 
-html main .controller .button-controller button, body main .controller .button-controller button, #root main .controller .button-controller button, .App main .controller .button-controller button {
-  height: 25px;
+html main .controller .song,
+body main .controller .song,
+#root main .controller .song,
+.App main .controller .song {
+  margin-top: 5px;
+  color: white;
 }
 
-html main .controller .volume-controller, body main .controller .volume-controller, #root main .controller .volume-controller, .App main .controller .volume-controller {
+html main .controller .button-controller,
+body main .controller .button-controller,
+#root main .controller .button-controller,
+.App main .controller .button-controller {
   padding: 10px;
 }
 
-html main .visual-area, body main .visual-area, #root main .visual-area, .App main .visual-area {
+html main .controller .button-controller button,
+body main .controller .button-controller button,
+#root main .controller .button-controller button,
+.App main .controller .button-controller button {
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+  background-color: #3b3b3a;
+  color: white;
+  font-size: 15px;
+  margin: 2px;
+  height: 35px;
+  cursor: pointer;
+  border-style: none;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+html main .controller .button-controller button:hover,
+body main .controller .button-controller button:hover,
+#root main .controller .button-controller button:hover,
+.App main .controller .button-controller button:hover {
+  -webkit-filter: brightness(120%);
+          filter: brightness(120%);
+}
+
+html main .controller .volume-controller,
+body main .controller .volume-controller,
+#root main .controller .volume-controller,
+.App main .controller .volume-controller {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px;
+}
+
+html main .controller .volume-controller input,
+body main .controller .volume-controller input,
+#root main .controller .volume-controller input,
+.App main .controller .volume-controller input {
+  cursor: pointer;
+}
+
+html main .controller .volume-controller label,
+body main .controller .volume-controller label,
+#root main .controller .volume-controller label,
+.App main .controller .volume-controller label {
+  color: white;
+  font-size: 15px;
+}
+
+html main .visual-area,
+body main .visual-area,
+#root main .visual-area,
+.App main .visual-area {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -77,18 +168,119 @@ html main .visual-area, body main .visual-area, #root main .visual-area, .App ma
   height: 600px;
 }
 
-html footer, body footer, #root footer, .App footer {
+html main .visual-area canvas,
+body main .visual-area canvas,
+#root main .visual-area canvas,
+.App main .visual-area canvas {
+  border-radius: 400px;
+}
+
+html main .modal,
+body main .modal,
+#root main .modal,
+.App main .modal {
+  z-index: 10000;
+  /* Sit on top */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding-top: 100px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.027);
+  /* Black w/ opacity */
+  position: absolute;
+}
+
+html main .modal .container,
+body main .modal .container,
+#root main .modal .container,
+.App main .modal .container {
+  background-color: #26282e;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 1px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid #4b4a4a;
+  width: 20%;
+  height: 30%;
+  border-radius: 10px;
+  -webkit-box-shadow: 7px 10px 15px rgba(22, 22, 22, 0.671);
+          box-shadow: 7px 10px 15px rgba(22, 22, 22, 0.671);
+}
+
+html main .modal .container .close,
+body main .modal .container .close,
+#root main .modal .container .close,
+.App main .modal .container .close {
+  height: 20px;
+}
+
+html footer,
+body footer,
+#root footer,
+.App footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   height: 120px;
   color: white;
   background-color: #1b1f20;
+}
+
+html footer h3,
+body footer h3,
+#root footer h3,
+.App footer h3 {
+  margin: 0;
+}
+
+html footer a,
+body footer a,
+#root footer a,
+.App footer a {
+  text-decoration: none;
+  color: #858585;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+}
+
+html footer a:hover,
+body footer a:hover,
+#root footer a:hover,
+.App footer a:hover {
+  -webkit-filter: brightness(190%);
+          filter: brightness(190%);
 }
 /*# sourceMappingURL=App.css.map */
